@@ -2,6 +2,12 @@ require 'sinatra'
 require 'sinatra/reloader' if development?
 require 'slim'
 require 'sass'
+require 'sqlite3'
+require 'data_mapper'
+require 'dm-sqlite-adapter'
+require 'dm-core'
+require 'dm-migrations'
+require './song'
 
 get('/styles.css'){ scss :styles }
 
