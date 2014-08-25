@@ -1,5 +1,6 @@
 doctype html
 html lang="en"
+<<<<<<< HEAD
   head
     title== @title || "Songs By Sinatra"
     meta charset="utf-8"
@@ -10,3 +11,15 @@ html lang="en"
       == slim :nav
     section
       == yield
+=======
+head
+  title== @title || "Songs By Sinatra"
+  meta charset="utf-8"
+  link rel="stylesheet" href="/styles.css"
+body
+  header
+    h1 Songs By Sinatra
+    == slim :nav
+  section
+    == yield
+>>>>>>> eb9492d778467b4b7b428d819c8d66f953aa4de8

@@ -1,3 +1,13 @@
+<<<<<<< HEAD
+=======
+require 'sinatra'
+require 'sinatra/reloader' if development?
+require 'slim'
+require 'sass'
+require 'sqlite3'
+require 'data_mapper'
+require 'dm-sqlite-adapter'
+>>>>>>> eb9492d778467b4b7b428d819c8d66f953aa4de8
 require 'dm-core'
 require 'dm-migrations'
 
@@ -10,6 +20,7 @@ class Song
   property :lyrics, Text
   property :length, Integer
   property :released_on, Date
+<<<<<<< HEAD
   
   def released_on=date
     super Date.strptime(date, '%m/%d/%Y')
@@ -53,3 +64,9 @@ delete '/songs/:id' do
   Song.get(params[:id]).destroy
   redirect to('/songs')
 end
+=======
+
+end
+
+DataMapper.finalize
+>>>>>>> eb9492d778467b4b7b428d819c8d66f953aa4de8
