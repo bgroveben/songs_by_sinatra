@@ -12,7 +12,7 @@ end
 
 get '/set/:name' do
   session[:name] = params[:name]
-name
+end
 
 get '/' do
   slim :home
