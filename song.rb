@@ -36,6 +36,7 @@ get '/songs/:id' do
 end
 
 get '/songs/:id/edit' do
+  halt(401,'Not Authorized') unless session[:admin]
   @song = Song.get(params[:id])
   slim :edit_song
 end
@@ -52,6 +53,7 @@ put '/songs/:id' do
 end
 
 delete '/songs/:id' do
+  halt(401,'Not Authorized') unless session[:admin]
   Song.get(params[:id]).destroy
   redirect to('/songs')
 end
