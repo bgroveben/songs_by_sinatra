@@ -4,4 +4,4 @@ To run this repo, cd to local directory, type "ruby main.rb", and got to http://
 
 http://evening-fjord-5236.herokuapp.com/ | git@heroku.com:evening-fjord-5236.git
 
-p 75 Deploying the Site
+p 83 Chapter 5
