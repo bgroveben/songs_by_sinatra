@@ -1,15 +1,14 @@
 source "https://rubygems.org"
 
 gem "sinatra"
-
 gem "sinatra-contrib"
-
 gem "slim"
-
 gem "sass"
-
-gem "sqlite3"
-
+gem "dm-core"
+gem "dm-migrations"
+gem "thin"
 gem "data_mapper"
-
-gem "dm-sqlite-adapter"
+gem "pg", :group => :production
+gem "dm-postgres-adapter", :group => :production
+gem "sqlite3", :group => :development
+gem "dm-sqlite-adapter", :group => :development
