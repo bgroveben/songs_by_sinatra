@@ -1,9 +1,18 @@
 require 'sinatra'
+require 'sinatra/reloader' if development?
 require 'slim'
 require 'sass'
 require './song'
 
 get('/styles.css'){ scss :styles }
+
+configure do
+  enable :sessions
+end
+
+get '/set/:name' do
+  session[:name] = params[:name]
+name
 
 get '/' do
   slim :home
