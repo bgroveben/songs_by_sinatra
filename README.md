@@ -2,4 +2,4 @@ This site is based on "Jump Start Sinatra" by Darren Jones Copyright 2013 SitePo
 
 To run this repo, cd to local directory, type "ruby main.rb", and got to http://localhost:4567/ in the browser.
 
-p 65 Chapter 4
+p 75 Deploying the Site
