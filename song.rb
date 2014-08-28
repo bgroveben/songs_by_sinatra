@@ -55,18 +55,24 @@ get '/songs/:id/edit' do
 end
 
 post '/songs' do
-  create_song
-  redirect to("/songs/#{song.id}")
+  if create_song
+    flash[:notice] = "Song successfully added"
+  end
+  redirect to('/songs')
 end
 
 put '/songs/:id' do
   song = find_song
-  song.update(params[:song])
-  redirect to("/songs/#{song.id}")
+  if song.update(params[:song])
+    flash[:notice] = "Song successfully updated"
+  end
+  redirect to('/songs')
 end
 
 delete '/songs/:id' do
   halt(401,'Not Authorized') unless session[:admin]
-  find_song.destroy
+  if find_song.destroy
+    flash[:notice] = "Song deleted"
+  end
   redirect to('/songs')
 end
