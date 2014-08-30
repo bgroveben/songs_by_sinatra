@@ -39,6 +39,26 @@ helpers do
   def set_title
     @title ||= "Songs By Sinatra"
   end
+
+  def send_message
+    Pony.mail(
+      :from => params[:name] + "<" + params[:email] + ">",
+      :to => 'franksinatra@gmail.com',
+      :subject => params[:name] + " has contacted you",
+      :body => params[:message],
+      :port => '587',
+      :via => :smtp,
+      :via_options => {
+        :address               => 'smtp.gmail.com',
+        :port                  => '587',
+        :enable_starttls_auto  => true,
+        :user_name             => 'frank',
+        :password              => 'sinatra',
+        :authentication        => :plain,
+        :domain                => 'localhost.localdomain'
+
+      })
+  end
 end
 
 get '/login' do
@@ -75,6 +95,12 @@ end
 
 get '/contact' do
   slim :contact
+end
+
+post '/contact' do
+  send_message
+  flash[:notice] = "Thanks for your message. We'll get back to you soon!"
+  redirect to('/')
 end
 
 not_found do
