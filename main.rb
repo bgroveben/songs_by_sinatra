@@ -4,6 +4,7 @@ require 'sinatra/flash'
 require 'slim'
 require 'sass'
 require 'data_mapper'
+require 'pony'
 require './song'
 
 configure :development do

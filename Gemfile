@@ -10,6 +10,7 @@ gem "dm-migrations"
 gem "thin"
 gem "data_mapper"
 gem "sinatra-flash"
+gem "pony"
 gem "pg", :group => :production
 gem "dm-postgres-adapter", :group => :production
 gem "sqlite3", :group => :development
