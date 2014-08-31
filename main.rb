@@ -6,19 +6,31 @@ require 'sass'
 require 'data_mapper'
 require 'pony'
 require './song'
+require './sinatra/auth'
 
-configure :development do
-  DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/development.db")
-end
-
-configure :production do
-  DataMapper.setup(:default, ENV['DATABASE_URL'])
-end
 
 configure do
   enable :sessions
   set :username, 'frank'
   set :password, 'sinatra'
+end
+
+configure :development do
+  DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/development.db")
+##Code for email setup
+#  set :email_address => 'smtp.gmail.com',
+#    :email_user_name => 'frank',
+#    :email_password => 'sinatra',
+#    :email_domain => 'localhost.localdomain'
+end
+
+configure :production do
+  DataMapper.setup(:default, ENV['DATABASE_URL'])
+##Code for email setup
+#  set :email_address => 'smtp.sendgrid.net',
+#  :email_user_name => ENV['SENDGRID_USERNAME'],
+#  :email_password => ENV['SENDGRID_PASSWORD'],
+#  :email_domain => 'heroku.com'
 end
 
 before do
@@ -57,32 +69,39 @@ helpers do
         :authentication        => :plain,
         :domain                => 'localhost.localdomain'
 
-      })
+      }
+    )
   end
 end
 
-get '/login' do
-  slim :login
-end
+##Instead of route handlers below, use /sinatra/auth.rb
+#get '/login' do
+#  slim :login
+#end
 
-post '/login' do
-  if params[:username] == settings.username && params[:password] == settings.password
-    session[:admin] = true
-    redirect to('/songs')
-  else
-    slim :login
-  end
-end
+#post '/login' do
+#  if params[:username] == settings.username && params[:password] == settings.password
+#    session[:admin] = true
+#    redirect to('/songs')
+#  else
+#    slim :login
+#  end
+#end
 
-get('/styles.css'){ scss :styles }
+#get '/set/:name' do
+#  session[:name] = params[:name]
+#end
 
-get '/set/:name' do
-  session[:name] = params[:name]
-end
+#get '/logout' do
+#  session.clear
+#  redirect to('/login')
+#end
 
 get '/get/hello' do
   "Hello #{session[:name]}"
 end
+
+get('/styles.css'){ scss :styles }
 
 get '/' do
   slim :home
@@ -105,9 +124,4 @@ end
 
 not_found do
   slim :not_found
-end
-
-get '/logout' do
-  session.clear
-  redirect to('/login')
 end
