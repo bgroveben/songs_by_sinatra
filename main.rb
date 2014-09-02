@@ -103,6 +103,7 @@ get '/get/hello' do
 end
 
 get('/styles.css'){ scss :styles }
+get('/javascripts/application.js'){ coffee :application }
 
 get '/' do
   slim :home
