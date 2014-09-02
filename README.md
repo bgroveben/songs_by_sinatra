@@ -4,4 +4,4 @@ To run this repo, cd to local directory, type "ruby main.rb", and got to http://
 
 http://evening-fjord-5236.herokuapp.com/ | git@heroku.com:evening-fjord-5236.git
 
-p 118 Chapter 6
+p 129 Ajax
