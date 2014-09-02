@@ -7,7 +7,8 @@ require 'data_mapper'
 require 'pony'
 require './song'
 require './sinatra/auth'
-
+require 'v8'
+require 'coffee-script'
 
 configure do
   enable :sessions
