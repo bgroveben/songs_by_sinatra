@@ -66,7 +66,7 @@ post '/songs' do
   if create_song
     flash[:notice] = "Song successfully added"
   end
-  redirect to('/songs')
+  redirect to("/songs/#{@song.id}")
 end
 
 put '/songs/:id' do
@@ -75,7 +75,7 @@ put '/songs/:id' do
   if song.update(params[:song])
     flash[:notice] = "Song successfully updated"
   end
-  redirect to('/songs')
+  redirect to("/songs/#{song.id}")
 end
 
 delete '/songs/:id' do
@@ -90,5 +90,6 @@ post '/songs/:id/like' do
   @song = find_song
   @song.likes = @song.likes.next
   @song.save
-  redirect back
+  redirect to"/songs/#{@song.id}" unless request.xhr?
+  slim :like, :layout => false
 end
