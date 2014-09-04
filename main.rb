@@ -6,7 +6,7 @@ require 'pony'
 require './sinatra/auth'
 require 'v8'
 require 'coffee-script'
-require './asset-handler'
+require_relative 'asset-handler'
 
 class Website < Sinatra::Base
   use AssetHandler
