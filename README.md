@@ -4,6 +4,9 @@ To run this repo, cd to local directory, type "rackup", and got to http://localh
 
 http://evening-fjord-5236.herokuapp.com/ | git@heroku.com:evening-fjord-5236.git
 
+Username: frank
+Password: sinatra
+
 To Do:
 1. Refactor the code.
 2. Try different frameworks, eg. a Rails-loke MVC structure.
